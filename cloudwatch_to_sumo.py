@@ -23,8 +23,8 @@ import boto.ec2.cloudwatch
 from time import gmtime, strftime
 
 # Set our AWS access keys. Must have Cloudwatch permissions in AWS IAM 
-AWS_ACCESS_KEY_ID = 'AKIAICTFGSZQX6SIYL6A'
-AWS_SECRET_ACCESS_KEY = 'gDrRLVpf1eudmj+XUGCcOGnFJHRUGIDe3YpKrioS'
+AWS_ACCESS_KEY_ID = 'YOUR KEY ID HERE'
+AWS_SECRET_ACCESS_KEY = 'YOUR ACCESS KEY HERE'
 
 ### Set Global Variables ###
 
