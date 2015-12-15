@@ -1,5 +1,5 @@
 """
-Example code to send CloudWatch Log to a Sumo hosted HTTP collector
+Lambda function to send CloudWatch Log data to a Sumo hosted HTTP collector
 You are free to use and redistribute.  No warranty is implied by the author or anyone else.
 All you need to do is upating the hostname and the path in the options
 """
