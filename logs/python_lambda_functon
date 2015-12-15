@@ -1,0 +1,45 @@
+"""
+Example code to send CloudWatch Log to a Sumo hosted HTTP collector
+You are free to use and redistribute.  No warranty is implied by the author or anyone else.
+All you need to do is upating the hostname and the path in the options
+"""
+ 
+# Import Modules
+import json
+import base64
+import zlib
+import urllib
+import urllib2
+from StringIO import StringIO
+
+# Define Globals
+url = 'SUMO API'
+
+# Define Helper Functions
+
+# Define Classes
+
+# Define Event Handler
+def lambda_handler(event, context):
+    """ Event Handler for CloudWatch events """
+    
+    # Decode events 
+    e = base64.b64decode(event['awslogs']['data'])
+    e = e.strip('"')
+
+    # Decompress data
+    z = zlib.decompress(e, 16+zlib.MAX_WBITS)
+        
+    j = json.loads(z)
+
+    for event in j['logEvents']:
+        data = json.dumps(event)
+        
+        # Check for throttling, if '200' send data to Sumo otherwise archive to S3
+        r = urllib.urlopen(url)
+        
+        if r.getcode() == 200:
+            print(urllib2.urlopen(url, data).read())
+            print("Success")
+        else:
+            print("Throttling in progress")
