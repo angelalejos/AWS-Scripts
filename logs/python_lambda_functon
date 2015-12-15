@@ -13,7 +13,7 @@ import urllib2
 from StringIO import StringIO
 
 # Define Globals
-url = 'SUMO API'
+url = 'https://collectors.sumologic.com/receiver/v1/http/SUMO_HTTP_TOKEN
 
 # Define Helper Functions
 
