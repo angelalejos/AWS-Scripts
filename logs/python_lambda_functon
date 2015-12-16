@@ -23,7 +23,7 @@ import urllib2
 from StringIO import StringIO
 
 # Define Globals
-url = 'https://collectors.sumologic.com/receiver/v1/http/SUMO_HTTP_TOKEN
+sumologicUrl = [SUMOLOGIC-URL]
 
 # Define Helper Functions
 
@@ -46,10 +46,10 @@ def lambda_handler(event, context):
         data = json.dumps(event)
         
         # Check for throttling, if '200' send data to Sumo otherwise archive to S3
-        r = urllib.urlopen(url)
+        r = urllib.urlopen(sumologicUrl)
         
         if r.getcode() == 200:
-            print(urllib2.urlopen(url, data).read())
+            print(urllib2.urlopen(sumologicUrl, data).read())
             print("Success")
         else:
             print("Throttling in progress")
