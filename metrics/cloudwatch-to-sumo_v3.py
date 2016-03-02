@@ -7,6 +7,9 @@ from time import gmtime, strftime
 from datetime import datetime, timedelta
 
 ### GLOBAL VARIABLES ###
+AWS_ACCESS_KEY_ID = '<YOUR AWS ACCESS KEY'>'
+AWS_SECRET_ACCESS_KEY = '<YOUR AWS SECRET'>'
+
 #regions = ["us-east-1", "us-west-1", "us-west-2", "ap-northeast-1", "ap-southeast-1", "ap-southeast-2", "eu-west-1", "sa-east-1"]
 regions = ["us-east-1"]
 
@@ -71,7 +74,7 @@ def get_ec2_metrics(metric, instanceId):
     """Pull instance metrics from CloudWatch."""
     global d
 
-    cw = boto3.client('cloudwatch', region_name=region)
+    cw = boto3.client('cloudwatch', region_name=region, aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
     results = cw.get_metric_statistics(
                             Namespace='AWS/EC2',
@@ -94,7 +97,7 @@ def get_ec2_metrics(metric, instanceId):
         d[metric] = []
 
 for region in regions:
-    s = boto3.session.Session(region_name=region)
+    s = boto3.session.Session(region_name=region, aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
     ec2 = s.resource('ec2')
 
     for i in ec2.instances.filter(Filters=filters):
