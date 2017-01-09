@@ -45,9 +45,9 @@ def lambda_handler(event, context):
                         'eni': instance.network_interfaces_attribute[i]['NetworkInterfaceId']
                 }
     
-                if instance.network_interfaces_attribute[i]['Association']['PublicIp']:
+                if 'Association' in instance.network_interfaces_attribute[i]:
                     n['publicIp'] = instance.network_interfaces_attribute[i]['Association']['PublicIp']
-                if instance.network_interfaces_attribute[i]['PrivateIpAddress']:
+                if 'PrivateIpAddress' in instance.network_interfaces_attribute[i]:
                     n['privateIpAddress'] = instance.network_interfaces_attribute[i]['PrivateIpAddress']
     
                 ec2Info['networkInterface'] = n
