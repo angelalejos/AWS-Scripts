@@ -35,11 +35,10 @@ def lambda_handler(event, context):
     
             for tag in instance.tags:
                 if 'Name' in tag['Key']:
-                    ec2Info['name'] = tag['Value']
+                    ec2Info['instanceName'] = tag['Value']
     
-            ec2Info['id'] = instance.id.strip('[]')
+            ec2Info['instanceId'] = instance.id.strip('[]')
     
-            print(ec2Info['name'])
             interfaces = instance.network_interfaces
     
             for i in range(len(instance.network_interfaces_attribute)):
