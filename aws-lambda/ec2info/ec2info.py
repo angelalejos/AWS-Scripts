@@ -3,8 +3,6 @@
 ## URL HERE  ##
 ##################################################################################
 
-#!/usr/bin/env python
-
 import boto3
 import datetime 
 import json
