@@ -9,9 +9,9 @@
 
 #Environment Configuration (Mac OS)#
 * Install pip
-** pip install boto3
+`pip install boto3`
 * Install AWS CLI
-** pip install awscli
+`pip install awscli`
 * Install Boto3
 
 * Putting your AWS credentials directly into your scripts is dangerous as you can quite easily forget to remove them before pushing it to a github repo. See here for other options - http://boto3.readthedocs.io/en/latest/guide/configuration.html
